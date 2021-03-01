@@ -20,7 +20,6 @@ class Solution:
     length = 0
     def permutarion(self,search_space,explored_items,sett,array):
         if len(explored_items) == self.length:
-            # print(explored_items,'ddd','o',arr)
             array.append(explored_items[:]) #ponder why explored_items[ ] doesn't work
             explored_items = []
             return
@@ -33,12 +32,12 @@ class Solution:
             explored_items.append(nums)
             sett = sett - {nums}  # {1,2,3} - {1} = {2,3} 1 gets explored andd the other gets add to search space
             search_space = list(sett)
-            
           
             self.permutations(search_space,explored_items,sett,array)
             
             # post order
 #           remove what u have explored so far
+
             explored_items.remove(nums)
             sett.add(nums)
             search_space = list(sett)
