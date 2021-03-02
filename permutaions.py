@@ -30,7 +30,7 @@ class Solution:
 #           add what u have explored so far
             
             explored_items.append(nums)
-            sett = sett - {nums}  # {1,2,3} - {1} = {2,3} 1 gets explored andd the other gets add to search space
+            sett = sett - {nums}  # {1,2,3} - {1} = {2,3} 1 gets explored andd the other gets added to search space
             search_space = list(sett)
           
             self.permutations(search_space,explored_items,sett,array)
