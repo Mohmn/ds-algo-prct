@@ -4,20 +4,32 @@ class Solution:
     count = 0
     
     def pos_present(self,size,pos_to_see,pos_on_watch):
-        #  marks the coulmn position and row position   marks the diagonal positoin
-        x_pos,y_pos = pos_on_watch
-        x_len,y_len = size,size
-        
-        area_covered_by_pos = [[(x,y_pos) for x in range(0,size)],[(x_pos,y) for y in range(0,size)],
-        [(x,y) for x,y in zip(range(x_pos-1,-1,-1),range(y_pos-1,-1,-1))],
-        [(x,y) for x,y in zip(range(x_pos,x_len),range(y_pos,y_len))],
-        [(x,y) for x,y in zip(range(x_pos,x_len),range(y_pos,-1,-1))],
-        [(x,y) for x,y in zip(range(x_pos,-1,-1),range(y_pos,y_len))]]
-       
-        for array in area_covered_by_pos:
-            if pos_to_see in array:
-                return True
+      
+#      for the row and coloumn
+       if pos_to_see[0] == pos_on_watch[0] or pos_to_see[1] == pos_on_watch[1]:
+            return True
+        # X1-Y1 = X2-Y2 or X1+Y1 = X2+Y2
+#       for diagonals
+        if (pos_to_see[0] - pos_to_see[1]) == (pos_on_watch[0] - pos_on_watch[1]):
+            return True
+        if (pos_to_see[0] + pos_to_see[1]) == (pos_on_watch[0] + pos_on_watch[1]):
+            return True
         return False
+      
+        #  marks the coulmn position and row position   marks the diagonal positoin
+#         x_pos,y_pos = pos_on_watch
+#         x_len,y_len = size,size
+        
+#         area_covered_by_pos = [[(x,y_pos) for x in range(0,size)],[(x_pos,y) for y in range(0,size)],
+#         [(x,y) for x,y in zip(range(x_pos-1,-1,-1),range(y_pos-1,-1,-1))],
+#         [(x,y) for x,y in zip(range(x_pos,x_len),range(y_pos,y_len))],
+#         [(x,y) for x,y in zip(range(x_pos,x_len),range(y_pos,-1,-1))],
+#         [(x,y) for x,y in zip(range(x_pos,-1,-1),range(y_pos,y_len))]]
+       
+#         for array in area_covered_by_pos:
+#             if pos_to_see in array:
+#                 return True
+#         return False
     
     def is_position_safe(self,so_far_seen,pos_to_see,size):
         if len(so_far_seen) == 0:
